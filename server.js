@@ -24,7 +24,7 @@ app.get('/pokemon', (req, res) => {
 
   // Route to render the New form
 app.get('/pokemon/new', (req, res) => {
-    res.render('New'); // Assuming you have a view file named New.jsx
+    res.render('New'); 
   });
 
 
@@ -32,14 +32,14 @@ app.get('/pokemon/new', (req, res) => {
 app.post('/pokemon', (req, res) => {
     const newPokemon = {
       name: req.body.name,
-      img: req.body.img,
+      img: `https://img.pokemondb.net/artwork/${req.body.name.toLowerCase()}`,
       // Add more fields as needed
     };
   
     // Save the new Pokémon to the data array
     pokemonData.push(newPokemon);
   
-    // Redirect to a page or render a view as needed
+    // Redirect to a page 
     res.redirect('/pokemon');
   });
 
