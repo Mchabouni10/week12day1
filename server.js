@@ -16,7 +16,14 @@ app.get('/pokemon', (req, res) => {
 
 // show by index 
 app.get('/pokemon/:id', (req, res) => {
-    res.send(req.params.id);
+    const pokemonId = req.params.id;
+    const selectedPokemon = pokemonData[pokemonId];
+  
+    if (selectedPokemon) {
+      res.render('Show', { pokemon: selectedPokemon });
+    } else {
+      res.status(404).send('Pokemon not found');
+    }
   });
 
 
