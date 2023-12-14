@@ -13,6 +13,10 @@ function Index(props) {
       <body>
         <h1 style={{ textAlign: 'center', color: '#ffffff', background : 'black' }}>See All The Pokemon!</h1>
 
+        <nav>
+        <a href="/pokemon/new"><h1 style={{color :'blue'}}>Create a New Pokemon</h1></a>
+        </nav>
+
         <ul style={{ listStyleType: 'none', padding: 0, display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
           {props.pokemon.map((poke, index) => (
             <li key={index} style={{ margin: '10px', textAlign: 'center' }}>

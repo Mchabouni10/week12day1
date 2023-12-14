@@ -5,6 +5,11 @@ const express = require('express');
 const app = express();
 
 
+// Middleware to parse incoming JSON data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
 
 const pokemonData = require('./models/pokemon');
 
@@ -15,13 +20,52 @@ app.get('/pokemon', (req, res) => {
 
 
 
+
+
+  // Route to render the New form
+app.get('/pokemon/new', (req, res) => {
+    res.render('New'); // Assuming you have a view file named New.jsx
+  });
+
+
+  // Route to handle the creation of a new Pokémon
+app.post('/pokemon', (req, res) => {
+    const newPokemon = {
+      name: req.body.name,
+      img: req.body.img,
+      // Add more fields as needed
+    };
+  
+    // Save the new Pokémon to the data array
+    pokemonData.push(newPokemon);
+  
+    // Redirect to a page or render a view as needed
+    res.redirect('/pokemon');
+  });
+
+
+
+
+
 // show by index 
-app.get('/pokemon/:id', (req, res) => {
+app.route('/pokemon/:id')
+  .get((req, res) => {
     const pokemonId = req.params.id;
     const selectedPokemon = pokemonData[pokemonId];
   
     if (selectedPokemon) {
       res.render('Show', { pokemon: selectedPokemon });
+    } else {
+      res.status(404).send('Pokemon not found');
+    }
+  })
+  .post((req, res) => {
+    const pokemonId = req.params.id;
+
+    // Check if the pokemonId is a valid index
+    if (pokemonId >= 0 && pokemonId < pokemonData.length) {
+      pokemonData.splice(pokemonId, 1);
+      res.redirect('/pokemon');
     } else {
       res.status(404).send('Pokemon not found');
     }

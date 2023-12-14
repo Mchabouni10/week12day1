@@ -18,7 +18,7 @@ function Show(props) {
 
         <div style={{ textAlign: 'center', margin: '20px' }}>
           <h2>{capitalizeFirstLetter(props.pokemon.name)}</h2>
-          <img src={imageUrl} alt={props.pokemon.name} style={{ maxWidth: '200px', maxHeight: '200px' }} />
+          <img src={imageUrl} alt={props.pokemon.name} style={{ maxWidth: '300px', maxHeight: '300px' }} />
           <br />
           <a href="/pokemon" style={{ color: 'blue' }}>Back</a>
         </div>
