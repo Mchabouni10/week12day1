@@ -17,7 +17,9 @@ function Index(props) {
           {props.pokemon.map((poke, index) => (
             <li key={index} style={{ margin: '10px', textAlign: 'center' }}>
               <a href={`/pokemon/${index}`}>
-                <img src={poke.img} alt={poke.name} style={{ maxWidth: '100px', maxHeight: '100px' }} />
+              <img
+               src={`${poke.img}.jpg`} alt={poke.name} style={{ maxWidth: '100x', maxHeight: '100px' }}
+              />
                 <h3 style={{ color: 'blue' }}>{CapitalFirstLetter(poke.name)}</h3>
               </a>
             </li>
