@@ -7,9 +7,16 @@ const app = express();
 
 const pokemonData = require('./models/pokemon');
 
-// get route pokemon that will display pokemon data as json
+// get route pokemon that will display pokemon data as json if we change json to render will display with list
 app.get('/pokemon', (req, res) => {
     res.render('Index', { pokemon: pokemonData });
+  });
+
+
+
+// show by index 
+app.get('/pokemon/:id', (req, res) => {
+    res.send(req.params.id);
   });
 
 
