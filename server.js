@@ -33,7 +33,6 @@ app.post('/pokemon', (req, res) => {
     const newPokemon = {
       name: req.body.name,
       img: `https://img.pokemondb.net/artwork/${req.body.name.toLowerCase()}`,
-      // Add more fields as needed
     };
   
     // Save the new Pokémon to the data array
